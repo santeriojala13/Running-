@@ -30,11 +30,14 @@
 
     /* NAVBAR */
     nav{
-      background:var(--primary); position:sticky; top:0; z-index:1000; box-shadow:0 2px 12px rgba(0,0,0,.1);
+      background:rgba(0,122,204,0.5); /* 50% läpinäkyvä */
+      backdrop-filter: blur(6px);      /* lasimainen efekti */
+      position:sticky; top:0; z-index:1000;
+      box-shadow:0 2px 12px rgba(0,0,0,.1);
     }
     .nav-container{
       max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between;
-      padding:18px 20px; /* aiempaa hieman korkeampi */
+      padding:18px 20px;
     }
     .logo{color:#fff; text-decoration:none; font-weight:700}
     .menu-toggle{
@@ -42,7 +45,7 @@
       font-size:1.1rem; padding:6px 10px; display:none; cursor:pointer;
     }
     .nav-links{
-      list-style:none; margin:0; padding:0; display:flex; gap:32px; align-items:center; /* suurempi gap */
+      list-style:none; margin:0; padding:0; display:flex; gap:32px; align-items:center;
     }
     .nav-links>li>a{color:#fff; text-decoration:none; font-weight:600}
     .nav-links>li>a:hover{text-decoration:underline}
@@ -62,7 +65,7 @@
     /* HERO */
     header{
       position:relative; height:420px;
-      background:url("images/Z50_0643.jpg") no-repeat center 60% / cover; /* mitali fokuksessa */
+      background:url("images/Z50_0643.jpg") no-repeat center 60% / cover;
       display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
     }
     header::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.35)}
@@ -104,7 +107,6 @@
       .nav-links.show{display:flex}
       .nav-links li{width:100%}
       .nav-links a{display:block; padding:10px 16px}
-      /* dropdown behaves like accordion on mobile */
       .dropdown-content{position:static; box-shadow:none; border-radius:0; display:none}
       .dropdown.open .dropdown-content{display:block}
       header{height:360px}
@@ -122,7 +124,6 @@
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#workouts">Workouts</a></li>
-
         <li class="dropdown" id="racesDropdown">
           <a href="#races" class="dropdown-toggle">Races ▾</a>
           <ul class="dropdown-content">
@@ -131,7 +132,6 @@
             <li><a href="#pnm2024">Paavo Nurmi Marathon 2024</a></li>
           </ul>
         </li>
-
         <li><a href="#plans">Training Plans</a></li>
         <li><a href="#other">Other</a></li>
       </ul>
@@ -139,7 +139,7 @@
   </nav>
 
   <!-- HERO -->
-  <header id="home" role="banner" aria-label="Site hero with medal">
+  <header id="home">
     <div class="inner">
       <h1>Running Experiences</h1>
       <p>Workouts, races and training plans from Finland and beyond</p>
@@ -148,8 +148,8 @@
 
   <main>
     <!-- Workouts -->
-    <section id="workouts" aria-labelledby="workouts-title">
-      <h2 id="workouts-title">Workouts</h2>
+    <section id="workouts">
+      <h2>Workouts</h2>
       <div class="card">
         <h3>Interval Training</h3>
         <p>My first interval workout session focusing on speed endurance and recovery management.</p>
@@ -157,10 +157,8 @@
     </section>
 
     <!-- Races -->
-    <section id="races" aria-labelledby="races-title">
-      <h2 id="races-title">Races</h2>
-
-      <!-- HCR 2025 -->
+    <section id="races">
+      <h2>Races</h2>
       <div class="card" id="hcr2025">
         <h3>Helsinki City Running Day, Marathon Relay – May 17, 2025</h3>
         <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/iNnWui9mgFe4rEHs05ytIx8qTPlYwq_gFkxE8sKuTJU-2048x1153.jpg"
@@ -186,7 +184,6 @@
         </p>
       </div>
 
-      <!-- Paavo Nurmi 2025 -->
       <div class="card" id="pnm2025">
         <h3>Paavo Nurmi Marathon 2025</h3>
         <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg"
@@ -211,7 +208,6 @@
         </p>
       </div>
 
-      <!-- Paavo Nurmi 2024 -->
       <div class="card" id="pnm2024">
         <h3>Paavo Nurmi Marathon 2024</h3>
         <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
@@ -227,8 +223,8 @@
     </section>
 
     <!-- Training Plans -->
-    <section id="plans" aria-labelledby="plans-title">
-      <h2 id="plans-title">Training Plans</h2>
+    <section id="plans">
+      <h2>Training Plans</h2>
       <div class="card">
         <h3>Marathon 12-week plan</h3>
         <p>A structured 12-week training plan designed to achieve a sub-3-hour marathon with focus on long runs, intervals and recovery.</p>
@@ -236,5 +232,44 @@
     </section>
 
     <!-- Other -->
-    <section id="other" aria-labelledby="other-title">
-      <h2 id="other-title">Other</h2>
+    <section id="other">
+      <h2>Other</h2>
+      <div class="card">
+        <h3>Running Gear Review</h3>
+        <p>Reviewing running shoes, GPS watches and other essential gear for training and races.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Running Experiences | Made with ❤️ and miles by Santeri Ojala</p>
+    <p class="social">
+      <a href="https://www.strava.com/" target="_blank" rel="noopener" aria-label="Strava"><i class="fa-brands fa-strava"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </p>
+  </footer>
+
+  <!-- Mobile nav/accordion JS -->
+  <script>
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.getElementById('navLinks');
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+    const racesDropdown = document.getElementById('racesDropdown');
+    const racesToggle = racesDropdown.querySelector('.dropdown-toggle');
+    racesToggle.addEventListener('click', (e) => {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        e.preventDefault();
+        racesDropdown.classList.toggle('open');
+      }
+    });
+    navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+      });
+    });
+  </script>
+</body>
+</html>
