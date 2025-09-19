@@ -8,10 +8,6 @@
   <meta name="author" content="Santeri Ojala">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --banner-focus-x: 60%;
-      --banner-focus-y: 20%;
-    }
     body {
       font-family: "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0;
@@ -48,10 +44,10 @@
     /* Hero banner */
     header {
       position: relative;
-      height: 350px;
+      height: 400px;
       background: url("images/Z50_0643.jpg") no-repeat;
       background-size: cover;
-      background-position: var(--banner-focus-x) var(--banner-focus-y);
+      background-position: center 60%; /* kohdistettu mitaliin */
       color: #fff;
       display: flex;
       align-items: center;
@@ -92,15 +88,32 @@
       box-shadow: 0 4px 15px rgba(0,0,0,.08);
       margin-bottom: 24px;
     }
-    .card img {
- max-width: 100%;
-  max-height: 600px; /* rajoittaa korkeuden */
-  display: block;
-  margin: 16px auto; /* keskitys */
-  border-radius: 8px;
-    }
     .card h3 {
       margin-top: 0;
+    }
+
+    /* Kuvat tekstin joukkoon */
+    .float-right {
+      float: right;
+      max-width: 250px;
+      margin: 0 0 12px 20px;
+      border-radius: 8px;
+    }
+    .float-left {
+      float: left;
+      max-width: 250px;
+      margin: 0 20px 12px 0;
+      border-radius: 8px;
+    }
+
+    /* Mobiili: float pois */
+    @media (max-width: 768px) {
+      .float-right, .float-left {
+        float: none;
+        display: block;
+        margin: 12px auto;
+        max-width: 90%;
+      }
     }
 
     footer {
@@ -145,18 +158,32 @@
 
       <div class="card">
         <h3>Helsinki City Running Day 2025</h3>
-        <p>Upcoming race experience in Helsinki, Finland. Details coming soon...</p>
+        <img src="images/Z50_0643.jpg" alt="Helsinki City Running Day 2025" class="float-left" />
+        <p>
+          Upcoming race experience in Helsinki, Finland. I’m preparing for a big performance at the Helsinki City Running Day 2025,
+          where thousands of runners gather in the capital. I’ll share my training build-up, expectations, and reflections after the race.
+        </p>
       </div>
 
       <div class="card">
         <h3>Paavo Nurmi Marathon 2025</h3>
-        <p>I participated in the Paavo Nurmi Marathon 2025 in Turku, Finland. The atmosphere, the crowd, and the route were unforgettable!</p>
-        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg" alt="Santeri Ojala running Paavo Nurmi Marathon 2025 in Turku, Finland" />
+        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg" 
+             alt="Santeri Ojala running Paavo Nurmi Marathon 2025 in Turku with medal" 
+             class="float-right" />
+        <p>
+          I participated in the Paavo Nurmi Marathon 2025 in Turku, Finland. The atmosphere was incredible – spectators lined the streets,
+          cheering every step. This year I managed to improve my time by several minutes compared to 2024, and the finish line sprint
+          was one of my proudest moments as a runner.
+        </p>
       </div>
 
       <div class="card">
         <h3>Paavo Nurmi Marathon 2024</h3>
-        <p>My earlier Paavo Nurmi Marathon experience in Turku, Finland. Reflecting on the lessons learned.</p>
+        <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
+        <p>
+          My earlier Paavo Nurmi Marathon experience in 2024 taught me a lot about pacing and mental strength. I struggled in the second half,
+          but crossing the finish line was still a huge achievement. These lessons shaped how I prepared for 2025.
+        </p>
       </div>
     </section>
 
