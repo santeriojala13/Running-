@@ -7,153 +7,126 @@
   <meta name="keywords" content="running blog, marathon, half marathon, Paavo Nurmi Marathon, Helsinki City Running Day, workouts, training plans, Finland running">
   <meta name="author" content="Santeri Ojala">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts (Poppins) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome (icons for footer) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    body {
-      font-family: "Segoe UI", Roboto, Arial, sans-serif;
-      margin: 0;
-      background: #f4f6f8;
-      color: #333;
-      scroll-behavior: smooth;
+    :root{
+      --bg:#f4f6f8;
+      --text:#2b2f36;
+      --muted:#5e6a73;
+      --primary:#007acc;
+      --primary-d:#005f99;
+      --accent:#f39c12;
+      --card:#ffffff;
+      --shadow:0 6px 20px rgba(0,0,0,.12);
+      --shadow-soft:0 4px 15px rgba(0,0,0,.08);
     }
+
+    /* Base */
+    html,body{margin:0;padding:0}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      scroll-behavior:smooth;
+      line-height:1.65;
+    }
+    img{max-width:100%;height:auto}
 
     /* Navbar */
-    nav {
-      background: #007acc;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    nav{
+      background:var(--primary);
+      padding:14px 20px;
+      position:sticky; top:0; z-index:1000;
+      box-shadow:0 2px 12px rgba(0,0,0,.1);
     }
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; justify-content:center; gap:28px; align-items:center;
     }
-    nav li {
-      position: relative;
+    nav li{position:relative}
+    nav a{
+      color:#fff; text-decoration:none; font-weight:600; letter-spacing:.2px;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
+    nav a:hover{ text-decoration:underline }
+
+    /* Dropdown */
+    .dropdown-content{
+      display:none; position:absolute; top:110%; left:0;
+      background:var(--primary);
+      list-style:none; margin:0; padding:8px 0; border-radius:10px; min-width:240px;
+      box-shadow:var(--shadow);
     }
-    nav a:hover {
-      text-decoration: underline;
+    .dropdown-content a{display:block; padding:10px 16px; color:#fff}
+    .dropdown-content a:hover{background:var(--primary-d)}
+    .dropdown:hover .dropdown-content{display:block}
+
+    /* Hero */
+    header{
+      position:relative; height:420px;
+      background:url("images/Z50_0643.jpg") no-repeat;
+      background-size:cover;
+      background-position:center 60%; /* mitali fokuksessa */
+      display:flex; align-items:center; justify-content:center; text-align:center;
+      color:#fff;
+    }
+    header::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.35)}
+    header .inner{position:relative; z-index:1; padding:0 16px}
+    header h1{margin:0; font-size:3.2rem; letter-spacing:.5px}
+    header p{margin:10px 0 0; opacity:.95}
+
+    /* Layout */
+    main{max-width:960px; margin:40px auto; padding:0 20px}
+    section{margin-bottom:56px}
+    h2{margin:0 0 18px; color:var(--primary)}
+    .card{
+      background:var(--card); padding:26px; border-radius:16px;
+      box-shadow:var(--shadow-soft); margin-bottom:24px; overflow:auto;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow) }
+    .card h3{margin-top:0}
+    .card p{color:var(--muted)}
+
+    /* Inline images (magazine style) */
+    .float-right{
+      float:right; max-width:260px;
+      margin:0 0 12px 22px; border-radius:12px;
+      box-shadow:0 3px 10px rgba(0,0,0,.15)
+    }
+    .float-left{
+      float:left; max-width:260px;
+      margin:0 22px 12px 0; border-radius:12px;
+      box-shadow:0 3px 10px rgba(0,0,0,.15)
     }
 
-    /* Dropdown menu */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: #007acc;
-      list-style: none;
-      margin: 0;
-      padding: 8px 0;
-      border-radius: 6px;
-      min-width: 220px;
-    }
-    .dropdown-content li {
-      padding: 0;
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 8px 16px;
-      color: #fff;
-      text-decoration: none;
-    }
-    .dropdown-content a:hover {
-      background: #005f99;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
+    /* Buttons/links inside content */
+    a{color:var(--primary); text-underline-offset:2px}
+    a:hover{color:var(--primary-d)}
+
+    /* Mobile tweaks */
+    @media (max-width: 768px){
+      header{height:360px}
+      header h1{font-size:2.4rem}
+      .float-right,.float-left{float:none; display:block; margin:12px auto; max-width:92%}
+      nav ul{gap:18px}
     }
 
-    /* Hero banner */
-    header {
-      position: relative;
-      height: 400px;
-      background: url("images/Z50_0643.jpg") no-repeat;
-      background-size: cover;
-      background-position: center 60%; /* kohdistettu mitaliin */
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    /* Footer */
+    footer{
+      text-align:center; padding:24px 16px; background:#1e2329; color:#fff; margin-top:56px
     }
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, .35);
+    .social a{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:38px; height:38px; border-radius:50%; margin:0 6px;
+      background:#2c3239; color:#fff; text-decoration:none;
+      transition:transform .15s ease, background .15s ease;
     }
-    header .inner {
-      position: relative;
-      z-index: 1;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 3rem;
-    }
-    header p {
-      margin: 8px 0 0;
-      opacity: .95;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    section {
-      margin-bottom: 50px;
-    }
-    .card {
-      background: #fff;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.08);
-      margin-bottom: 24px;
-      overflow: auto;
-    }
-    .card h3 {
-      margin-top: 0;
-    }
-
-    /* Kuvat tekstin joukkoon */
-    .float-right {
-      float: right;
-      max-width: 250px;
-      margin: 0 0 12px 20px;
-      border-radius: 8px;
-    }
-    .float-left {
-      float: left;
-      max-width: 250px;
-      margin: 0 20px 12px 0;
-      border-radius: 8px;
-    }
-
-    /* Mobiili: float pois */
-    @media (max-width: 768px) {
-      .float-right, .float-left {
-        float: none;
-        display: block;
-        margin: 12px auto;
-        max-width: 90%;
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: #fff;
-      margin-top: 40px;
-    }
+    .social a:hover{ transform:translateY(-2px); background:#3a424b }
   </style>
 </head>
 <body>
@@ -173,7 +146,7 @@
     </ul>
   </nav>
 
-  <header id="home">
+  <header id="home" role="banner" aria-label="Site hero with medal">
     <div class="inner">
       <h1>My Running Blog</h1>
       <p>Workouts, races and training plans from Finland and beyond</p>
@@ -182,8 +155,8 @@
 
   <main>
     <!-- Workouts -->
-    <section id="workouts">
-      <h2>Workouts</h2>
+    <section id="workouts" aria-labelledby="workouts-title">
+      <h2 id="workouts-title">Workouts</h2>
       <div class="card">
         <h3>Interval Training</h3>
         <p>My first interval workout session focusing on speed endurance and recovery management.</p>
@@ -191,57 +164,57 @@
     </section>
 
     <!-- Races -->
-    <section id="races">
-      <h2>Races</h2>
+    <section id="races" aria-labelledby="races-title">
+      <h2 id="races-title">Races</h2>
 
       <!-- Helsinki City Running Day -->
       <div class="card" id="hcr2025">
         <h3>Helsinki City Running Day, Marathon Relay – May 17, 2025</h3>
-        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/iNnWui9mgFe4rEHs05ytIx8qTPlYwq_gFkxE8sKuTJU-2048x1153.jpg" 
-             alt="Santeri Ojala running Helsinki City Running Day Marathon Relay with Aurajoen Dynamo team" 
+        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/iNnWui9mgFe4rEHs05ytIx8qTPlYwq_gFkxE8sKuTJU-2048x1153.jpg"
+             alt="Helsinki City Running Day Marathon Relay with Aurajoen Dynamo team"
              class="float-left" />
         <p>
-          Helsinki City Running Day once again offered an amazing atmosphere. This time I took part in the marathon relay as 
-          part of our team <strong>Aurajoen Dynamo</strong>, together with my training friends from Turku. We managed to secure 
+          Helsinki City Running Day once again offered an amazing atmosphere. This time I took part in the marathon relay as
+          part of our team <strong>Aurajoen Dynamo</strong>, together with my training friends from Turku. We managed to secure
           <strong>3rd place overall</strong>, which was a great achievement for us.
         </p>
         <p>
-          My personal stint was <strong>12.3 kilometers</strong>, and I held a steady <strong>3:38 min/km pace</strong>, 
+          My personal stint was <strong>12.3 kilometers</strong>, and I held a steady <strong>3:38 min/km pace</strong>,
           which was really good for my condition at that time.
         </p>
         <p>
-          The event is Finland’s largest running event, bringing together thousands of runners from around the world. 
-          More info here: 
-          <a href="https://helsinkicityrunningday.fi/" target="_blank">Helsinki City Running Day</a>.
+          The event is Finland’s largest running event, bringing together thousands of runners from around the world.
+          More info here:
+          <a href="https://helsinkicityrunningday.fi/" target="_blank" rel="noopener">Helsinki City Running Day</a>.
         </p>
         <p>
-          You can also find more details about my race on my 
-          <a href="https://www.strava.com/activities/14505433323" target="_blank">Strava page</a>.
+          You can also find more details about my race on my
+          <a href="https://www.strava.com/activities/14505433323" target="_blank" rel="noopener">Strava page</a>.
         </p>
       </div>
 
       <!-- Paavo Nurmi 2025 -->
       <div class="card" id="pnm2025">
         <h3>Paavo Nurmi Marathon 2025</h3>
-        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg" 
-             alt="Santeri Ojala running Paavo Nurmi Marathon 2025 in Turku with medal" 
+        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg"
+             alt="Paavo Nurmi Marathon 2025 in Turku with medal"
              class="float-right" />
         <p>
-          Paavo Nurmi Marathon, organized in Turku, was a great experience. My year had been tough due to an irritating and 
-          long-lasting ankle injury. However, I managed to get proper training in during the last 6 weeks before the race 
+          Paavo Nurmi Marathon, organized in Turku, was a great experience. My year had been tough due to an irritating and
+          long-lasting ankle injury. However, I managed to get proper training in during the last 6 weeks before the race
           and was able to get into good shape.
         </p>
         <p>
-          I finished <strong>6th overall with a time of 2:49:56</strong>, which was a new personal best. 
+          I finished <strong>6th overall with a time of 2:49:56</strong>, which was a new personal best.
           I kept a steady 4 min/km pace throughout the race and managed to hold it until the end.
         </p>
         <p>
-          The event is one of the biggest marathon races in Finland. 
-          More info here: <a href="https://paavonurmigames.fi/paavo-nurmi-festival/marathon/" target="_blank">Paavo Nurmi Marathon</a>.
+          The event is one of the biggest marathon races in Finland.
+          More info here: <a href="https://paavonurmigames.fi/paavo-nurmi-festival/marathon/" target="_blank" rel="noopener">Paavo Nurmi Marathon</a>.
         </p>
         <p>
-          More details about the race on my 
-          <a href="https://www.strava.com/activities/15477309662" target="_blank">Strava page</a>.
+          More details about the race on my
+          <a href="https://www.strava.com/activities/15477309662" target="_blank" rel="noopener">Strava page</a>.
         </p>
       </div>
 
@@ -250,19 +223,19 @@
         <h3>Paavo Nurmi Marathon 2024</h3>
         <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
         <p>
-          The 2024 edition of the Paavo Nurmi Marathon was a turning point for me. I faced challenges with pacing and 
-          struggled during the second half of the race, but crossing the finish line was still a huge personal victory. 
+          The 2024 edition of the Paavo Nurmi Marathon was a turning point for me. I faced challenges with pacing and
+          struggled during the second half of the race, but crossing the finish line was still a huge personal victory.
         </p>
         <p>
-          That experience taught me the importance of consistency in training and mental resilience during tough moments. 
+          That experience taught me the importance of consistency in training and mental resilience during tough moments.
           The lessons learned in 2024 directly influenced how I prepared for the 2025 race.
         </p>
       </div>
     </section>
 
     <!-- Training Plans -->
-    <section id="plans">
-      <h2>Training Plans</h2>
+    <section id="plans" aria-labelledby="plans-title">
+      <h2 id="plans-title">Training Plans</h2>
       <div class="card">
         <h3>Marathon 12-week plan</h3>
         <p>A structured 12-week training plan designed to achieve a sub-3-hour marathon with focus on long runs, intervals and recovery.</p>
@@ -270,8 +243,8 @@
     </section>
 
     <!-- Other -->
-    <section id="other">
-      <h2>Other</h2>
+    <section id="other" aria-labelledby="other-title">
+      <h2 id="other-title">Other</h2>
       <div class="card">
         <h3>Running Gear Review</h3>
         <p>Reviewing running shoes, GPS watches and other essential gear for training and races.</p>
@@ -281,6 +254,12 @@
 
   <footer>
     <p>© 2025 My Running Blog | Made with ❤️ and miles by Santeri Ojala</p>
+    <p class="social" aria-label="Social links">
+      <!-- Päivitä linkit omiksi profiileiksi, kun haluat -->
+      <a href="https://www.strava.com/" target="_blank" rel="noopener" aria-label="Strava"><i class="fa-brands fa-strava"></i></a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    </p>
   </footer>
 </body>
 </html>
