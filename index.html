@@ -8,144 +8,136 @@
   <meta name="author" content="Santeri Ojala">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts (Poppins) -->
+  <!-- Google Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome (icons for footer) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root{
-      --bg:#f4f6f8;
-      --text:#2b2f36;
-      --muted:#5e6a73;
-      --primary:#007acc;
-      --primary-d:#005f99;
-      --accent:#f39c12;
-      --card:#ffffff;
-      --shadow:0 6px 20px rgba(0,0,0,.12);
-      --shadow-soft:0 4px 15px rgba(0,0,0,.08);
+      --bg:#f4f6f8; --text:#2b2f36; --muted:#5e6a73;
+      --primary:#007acc; --primary-d:#005f99; --accent:#f39c12;
+      --card:#ffffff; --shadow:0 6px 20px rgba(0,0,0,.12); --shadow-soft:0 4px 15px rgba(0,0,0,.08);
+      --maxw:960px;
     }
-
-    /* Base */
-    html,body{margin:0;padding:0}
+    *{box-sizing:border-box}
+    html,body{margin:0}
     body{
       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      scroll-behavior:smooth;
-      line-height:1.65;
+      background:var(--bg); color:var(--text); line-height:1.65; scroll-behavior:smooth;
     }
-    img{max-width:100%;height:auto}
+    a{color:var(--primary); text-underline-offset:2px}
+    a:hover{color:var(--primary-d)}
 
-    /* Navbar */
+    /* NAVBAR */
     nav{
-      background:var(--primary);
-      padding:14px 20px;
-      position:sticky; top:0; z-index:1000;
-      box-shadow:0 2px 12px rgba(0,0,0,.1);
+      background:var(--primary); position:sticky; top:0; z-index:1000; box-shadow:0 2px 12px rgba(0,0,0,.1);
     }
-    nav ul{
-      list-style:none; margin:0; padding:0;
-      display:flex; justify-content:center; gap:28px; align-items:center;
+    .nav-container{
+      max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
     }
-    nav li{position:relative}
-    nav a{
-      color:#fff; text-decoration:none; font-weight:600; letter-spacing:.2px;
+    .logo{color:#fff; text-decoration:none; font-weight:700}
+    .menu-toggle{
+      background:none; border:1px solid rgba(255,255,255,.5); color:#fff; border-radius:8px;
+      font-size:1.1rem; padding:6px 10px; display:none; cursor:pointer;
     }
-    nav a:hover{ text-decoration:underline }
+    .nav-links{
+      list-style:none; margin:0; padding:0; display:flex; gap:24px; align-items:center;
+    }
+    .nav-links>li>a{color:#fff; text-decoration:none; font-weight:600}
+    .nav-links>li>a:hover{text-decoration:underline}
 
-    /* Dropdown */
+    /* DROPDOWN (desktop hover) */
+    .dropdown{position:relative}
     .dropdown-content{
-      display:none; position:absolute; top:110%; left:0;
-      background:var(--primary);
-      list-style:none; margin:0; padding:8px 0; border-radius:10px; min-width:240px;
-      box-shadow:var(--shadow);
+      display:none; position:absolute; top:120%; left:0; min-width:240px; background:var(--primary);
+      border-radius:10px; padding:8px 0; list-style:none; margin:0; box-shadow:var(--shadow);
     }
-    .dropdown-content a{display:block; padding:10px 16px; color:#fff}
+    .dropdown-content a{display:block; padding:10px 16px; color:#fff; text-decoration:none}
     .dropdown-content a:hover{background:var(--primary-d)}
-    .dropdown:hover .dropdown-content{display:block}
+    @media (hover:hover){
+      .dropdown:hover .dropdown-content{display:block}
+    }
 
-    /* Hero */
+    /* HERO */
     header{
       position:relative; height:420px;
-      background:url("images/Z50_0643.jpg") no-repeat;
-      background-size:cover;
-      background-position:center 60%; /* mitali fokuksessa */
-      display:flex; align-items:center; justify-content:center; text-align:center;
-      color:#fff;
+      background:url("images/Z50_0643.jpg") no-repeat center 60% / cover;
+      display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
     }
     header::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.35)}
     header .inner{position:relative; z-index:1; padding:0 16px}
     header h1{margin:0; font-size:3.2rem; letter-spacing:.5px}
     header p{margin:10px 0 0; opacity:.95}
 
-    /* Layout */
-    main{max-width:960px; margin:40px auto; padding:0 20px}
+    /* LAYOUT */
+    main{max-width:var(--maxw); margin:40px auto; padding:0 16px}
     section{margin-bottom:56px}
     h2{margin:0 0 18px; color:var(--primary)}
     .card{
-      background:var(--card); padding:26px; border-radius:16px;
-      box-shadow:var(--shadow-soft); margin-bottom:24px; overflow:auto;
-      transition:transform .18s ease, box-shadow .18s ease;
+      background:var(--card); padding:26px; border-radius:16px; box-shadow:var(--shadow-soft);
+      margin-bottom:24px; overflow:auto; transition:transform .18s ease, box-shadow .18s ease;
     }
-    .card:hover{ transform:translateY(-4px); box-shadow:var(--shadow) }
+    .card:hover{transform:translateY(-4px); box-shadow:var(--shadow)}
     .card h3{margin-top:0}
     .card p{color:var(--muted)}
 
-    /* Inline images (magazine style) */
-    .float-right{
-      float:right; max-width:260px;
-      margin:0 0 12px 22px; border-radius:12px;
-      box-shadow:0 3px 10px rgba(0,0,0,.15)
-    }
-    .float-left{
-      float:left; max-width:260px;
-      margin:0 22px 12px 0; border-radius:12px;
-      box-shadow:0 3px 10px rgba(0,0,0,.15)
-    }
+    /* MAGAZINE-STYLE INLINE IMAGES */
+    .float-right{float:right; max-width:260px; margin:0 0 12px 22px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,.15)}
+    .float-left{float:left; max-width:260px; margin:0 22px 12px 0; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,.15)}
 
-    /* Buttons/links inside content */
-    a{color:var(--primary); text-underline-offset:2px}
-    a:hover{color:var(--primary-d)}
+    /* FOOTER */
+    footer{background:#1e2329; color:#fff; text-align:center; padding:24px 16px; margin-top:56px}
+    .social a{
+      display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%;
+      margin:0 6px; background:#2c3239; color:#fff; text-decoration:none; transition:transform .15s ease, background .15s ease;
+    }
+    .social a:hover{transform:translateY(-2px); background:#3a424b}
 
-    /* Mobile tweaks */
+    /* MOBILE */
     @media (max-width: 768px){
+      .menu-toggle{display:block}
+      .nav-links{
+        position:absolute; left:0; right:0; top:60px; background:var(--primary);
+        display:none; flex-direction:column; gap:0; padding:8px 0 12px;
+      }
+      .nav-links.show{display:flex}
+      .nav-links li{width:100%}
+      .nav-links a{display:block; padding:10px 16px}
+      /* dropdown behaves like accordion on mobile */
+      .dropdown-content{position:static; box-shadow:none; border-radius:0; display:none}
+      .dropdown.open .dropdown-content{display:block}
       header{height:360px}
       header h1{font-size:2.4rem}
       .float-right,.float-left{float:none; display:block; margin:12px auto; max-width:92%}
-      nav ul{gap:18px}
     }
-
-    /* Footer */
-    footer{
-      text-align:center; padding:24px 16px; background:#1e2329; color:#fff; margin-top:56px
-    }
-    .social a{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:38px; height:38px; border-radius:50%; margin:0 6px;
-      background:#2c3239; color:#fff; text-decoration:none;
-      transition:transform .15s ease, background .15s ease;
-    }
-    .social a:hover{ transform:translateY(-2px); background:#3a424b }
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
-    <ul>
-      <li><a href="#workouts">Workouts</a></li>
-      <li class="dropdown">
-        <a href="#races">Races ▾</a>
-        <ul class="dropdown-content">
-          <li><a href="#hcr2025">HCR Marathon Relay 2025</a></li>
-          <li><a href="#pnm2025">Paavo Nurmi Marathon 2025</a></li>
-          <li><a href="#pnm2024">Paavo Nurmi Marathon 2024</a></li>
-        </ul>
-      </li>
-      <li><a href="#plans">Training Plans</a></li>
-      <li><a href="#other">Other</a></li>
-    </ul>
+    <div class="nav-container">
+      <a href="#home" class="logo">My Running Blog</a>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#workouts">Workouts</a></li>
+
+        <li class="dropdown" id="racesDropdown">
+          <a href="#races" class="dropdown-toggle">Races ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="#hcr2025">HCR Marathon Relay 2025</a></li>
+            <li><a href="#pnm2025">Paavo Nurmi Marathon 2025</a></li>
+            <li><a href="#pnm2024">Paavo Nurmi Marathon 2024</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#plans">Training Plans</a></li>
+        <li><a href="#other">Other</a></li>
+      </ul>
+    </div>
   </nav>
 
+  <!-- HERO -->
   <header id="home" role="banner" aria-label="Site hero with medal">
     <div class="inner">
       <h1>My Running Blog</h1>
@@ -167,7 +159,7 @@
     <section id="races" aria-labelledby="races-title">
       <h2 id="races-title">Races</h2>
 
-      <!-- Helsinki City Running Day -->
+      <!-- HCR 2025 -->
       <div class="card" id="hcr2025">
         <h3>Helsinki City Running Day, Marathon Relay – May 17, 2025</h3>
         <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/iNnWui9mgFe4rEHs05ytIx8qTPlYwq_gFkxE8sKuTJU-2048x1153.jpg"
@@ -223,12 +215,10 @@
         <h3>Paavo Nurmi Marathon 2024</h3>
         <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
         <p>
-          The 2024 edition of the Paavo Nurmi Marathon was a turning point for me. I faced challenges with pacing and
-          struggled during the second half of the race, but crossing the finish line was still a huge personal victory.
+          The 2024 edition of the Paavo Nurmi Marathon was
         </p>
         <p>
-          That experience taught me the importance of consistency in training and mental resilience during tough moments.
-          The lessons learned in 2024 directly influenced how I prepared for the 2025 race.
+            race.
         </p>
       </div>
     </section>
@@ -255,11 +245,38 @@
   <footer>
     <p>© 2025 My Running Blog | Made with ❤️ and miles by Santeri Ojala</p>
     <p class="social" aria-label="Social links">
-      <!-- Päivitä linkit omiksi profiileiksi, kun haluat -->
+      <!-- Päivitä linkit omiksi profiileiksi kun haluat -->
       <a href="https://www.strava.com/" target="_blank" rel="noopener" aria-label="Strava"><i class="fa-brands fa-strava"></i></a>
       <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
       <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </p>
   </footer>
+
+  <!-- Mobile nav/accordion JS -->
+  <script>
+    // Hamburger toggle
+    const toggleBtn = document.querySelector('.menu-toggle');
+    const navLinks = document.getElementById('navLinks');
+    toggleBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Dropdown works on mobile as accordion
+    const racesDropdown = document.getElementById('racesDropdown');
+    const racesToggle = racesDropdown.querySelector('.dropdown-toggle');
+    racesToggle.addEventListener('click', (e) => {
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        e.preventDefault(); // estä heti scrollaus #races ankkuriin
+        racesDropdown.classList.toggle('open');
+      }
+    });
+
+    // Sulje mobiilivalikko linkkiä klikatessa (parempi UX)
+    navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>
