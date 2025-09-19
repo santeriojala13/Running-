@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Running Blog | Workouts, Races, Training Plans</title>
-  <meta name="description" content="My Running Blog by Santeri Ojala: sharing marathon race experiences, workouts, and training plans from Finland and beyond.">
+  <title>Running Experiences | Workouts, Races, Training Plans</title>
+  <meta name="description" content="Running Experiences by Santeri Ojala: sharing marathon race experiences, workouts, and training plans from Finland and beyond.">
   <meta name="keywords" content="running blog, marathon, half marathon, Paavo Nurmi Marathon, Helsinki City Running Day, workouts, training plans, Finland running">
   <meta name="author" content="Santeri Ojala">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,8 @@
       background:var(--primary); position:sticky; top:0; z-index:1000; box-shadow:0 2px 12px rgba(0,0,0,.1);
     }
     .nav-container{
-      max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 16px;
+      max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between;
+      padding:18px 20px; /* aiempaa hieman korkeampi */
     }
     .logo{color:#fff; text-decoration:none; font-weight:700}
     .menu-toggle{
@@ -41,7 +42,7 @@
       font-size:1.1rem; padding:6px 10px; display:none; cursor:pointer;
     }
     .nav-links{
-      list-style:none; margin:0; padding:0; display:flex; gap:24px; align-items:center;
+      list-style:none; margin:0; padding:0; display:flex; gap:32px; align-items:center; /* suurempi gap */
     }
     .nav-links>li>a{color:#fff; text-decoration:none; font-weight:600}
     .nav-links>li>a:hover{text-decoration:underline}
@@ -61,7 +62,7 @@
     /* HERO */
     header{
       position:relative; height:420px;
-      background:url("images/Z50_0643.jpg") no-repeat center 60% / cover;
+      background:url("images/Z50_0643.jpg") no-repeat center 60% / cover; /* mitali fokuksessa */
       display:flex; align-items:center; justify-content:center; text-align:center; color:#fff;
     }
     header::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.35)}
@@ -97,7 +98,7 @@
     @media (max-width: 768px){
       .menu-toggle{display:block}
       .nav-links{
-        position:absolute; left:0; right:0; top:60px; background:var(--primary);
+        position:absolute; left:0; right:0; top:64px; background:var(--primary);
         display:none; flex-direction:column; gap:0; padding:8px 0 12px;
       }
       .nav-links.show{display:flex}
@@ -117,7 +118,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-container">
-      <a href="#home" class="logo">My Running Blog</a>
+      <a href="#home" class="logo">Running Experiences</a>
       <button class="menu-toggle" aria-label="Toggle menu">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#workouts">Workouts</a></li>
@@ -140,7 +141,7 @@
   <!-- HERO -->
   <header id="home" role="banner" aria-label="Site hero with medal">
     <div class="inner">
-      <h1>My Running Blog</h1>
+      <h1>Running Experiences</h1>
       <p>Workouts, races and training plans from Finland and beyond</p>
     </div>
   </header>
@@ -215,10 +216,12 @@
         <h3>Paavo Nurmi Marathon 2024</h3>
         <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
         <p>
-          The 2024 edition of the Paavo Nurmi Marathon was
+          The 2024 edition of the Paavo Nurmi Marathon was a turning point for me. I faced challenges with pacing and
+          struggled during the second half of the race, but crossing the finish line was still a huge personal victory.
         </p>
         <p>
-            race.
+          That experience taught me the importance of consistency in training and mental resilience during tough moments.
+          The lessons learned in 2024 directly influenced how I prepared for the 2025 race.
         </p>
       </div>
     </section>
@@ -235,48 +238,3 @@
     <!-- Other -->
     <section id="other" aria-labelledby="other-title">
       <h2 id="other-title">Other</h2>
-      <div class="card">
-        <h3>Running Gear Review</h3>
-        <p>Reviewing running shoes, GPS watches and other essential gear for training and races.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 My Running Blog | Made with ❤️ and miles by Santeri Ojala</p>
-    <p class="social" aria-label="Social links">
-      <!-- Päivitä linkit omiksi profiileiksi kun haluat -->
-      <a href="https://www.strava.com/" target="_blank" rel="noopener" aria-label="Strava"><i class="fa-brands fa-strava"></i></a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-    </p>
-  </footer>
-
-  <!-- Mobile nav/accordion JS -->
-  <script>
-    // Hamburger toggle
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.getElementById('navLinks');
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-
-    // Dropdown works on mobile as accordion
-    const racesDropdown = document.getElementById('racesDropdown');
-    const racesToggle = racesDropdown.querySelector('.dropdown-toggle');
-    racesToggle.addEventListener('click', (e) => {
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        e.preventDefault(); // estä heti scrollaus #races ankkuriin
-        racesDropdown.classList.toggle('open');
-      }
-    });
-
-    // Sulje mobiilivalikko linkkiä klikatessa (parempi UX)
-    navLinks.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', () => {
-        if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
-      });
-    });
-  </script>
-</body>
-</html>
