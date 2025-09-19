@@ -9,6 +9,39 @@
       margin: 0;
       background: #f4f6f8;
       color: #333;
+      scroll-behavior: smooth; /* pehmeä scrollaus */
+    }
+
+    /* Navbar */
+    nav {
+      background: #007acc;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
     }
 
     /* Hero banner */
@@ -52,7 +85,7 @@
       padding: 0 20px;
     }
 
-    .intro, .journey, .post {
+    .intro, .journey, .post, .about {
       background: white;
       padding: 25px;
       margin-bottom: 30px;
@@ -81,6 +114,15 @@
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#journey">My Running Journey</a></li>
+      <li><a href="#experiences">Experiences</a></li>
+      <li><a href="#about">About Me</a></li>
+    </ul>
+  </nav>
+
   <!-- Banner -->
   <header>
     <div>
@@ -95,19 +137,27 @@
       <p>This is my new running blog posting details about my runs and experiences.</p>
     </section>
 
-    <!-- New Journey Section -->
-    <section class="journey">
+    <!-- Running Journey -->
+    <section id="journey" class="journey">
       <h2>My Running Journey</h2>
       <p>Running has been an essential part of my life. Here I will share how it all started, my training, and the milestones along the way.</p>
       <img src="images/Z50_0643.jpg" alt="Running Journey">
     </section>
 
     <!-- Blog Post -->
-    <section class="post">
+    <section id="experiences" class="post">
       <h2>Paavo Nurmi Marathon Experiences</h2>
       <p>I participated in the Paavo Nurmi Marathon and it was an unforgettable experience. 
          The atmosphere, the crowd, and the route were amazing!</p>
-      <img src="images/_NZ91837-Edit.jpg" alt="Paavo Nurmi Marathon">
+      <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg" 
+           alt="Paavo Nurmi Marathon">
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <p>Hi, I’m Santeri and this is my personal running blog. I’m passionate about running, marathons, and sharing experiences with others. 
+         Here you’ll find stories from my training, races, and personal journey in running.</p>
     </section>
   </main>
 
