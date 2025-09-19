@@ -11,23 +11,39 @@
       color: #333;
     }
 
+    /* Hero banner */
     header {
-      background: linear-gradient(135deg, #007acc, #00c6ff);
+      position: relative;
+      height: 350px;
+      background: url("images/Z50_0643.jpg") center/cover no-repeat;
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 60px 20px;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    header h1, header p {
+      position: relative;
+      z-index: 1;
     }
 
     header h1 {
-      margin: 0;
       font-size: 3em;
+      margin: 0;
       font-weight: bold;
     }
 
     header p {
       font-size: 1.2em;
       margin-top: 10px;
-      opacity: 0.9;
     }
 
     main {
@@ -36,7 +52,7 @@
       padding: 0 20px;
     }
 
-    .intro, .post {
+    .intro, .journey, .post {
       background: white;
       padding: 25px;
       margin-bottom: 30px;
@@ -49,7 +65,7 @@
       color: #007acc;
     }
 
-    .post img {
+    .post img, .journey img {
       max-width: 100%;
       border-radius: 8px;
       margin-top: 15px;
@@ -62,40 +78,36 @@
       color: white;
       margin-top: 40px;
     }
-
-    /* 👇 Lomake piilotettu */
-    .new-post {
-      display: none;
-    }
   </style>
 </head>
 <body>
+  <!-- Banner -->
   <header>
-    <h1>🏃 My Running Blog</h1>
-    <p>Sharing my runs, marathons and training experiences</p>
+    <div>
+      <h1>My Running Blog</h1>
+      <p>Sharing my runs, marathons and training experiences</p>
+    </div>
   </header>
 
   <main>
+    <!-- Intro -->
     <section class="intro">
       <p>This is my new running blog posting details about my runs and experiences.</p>
     </section>
 
-    <!-- Tämä on piilotettu yleisöltä -->
-    <section class="new-post">
-      <h2>Write a new blog post</h2>
-      <form>
-        <input type="text" placeholder="Post title" required>
-        <textarea rows="4" placeholder="Write your post here..." required></textarea>
-        <button type="submit">Publish</button>
-      </form>
+    <!-- New Journey Section -->
+    <section class="journey">
+      <h2>My Running Journey</h2>
+      <p>Running has been an essential part of my life. Here I will share how it all started, my training, and the milestones along the way.</p>
+      <img src="images/Z50_0643.jpg" alt="Running Journey">
     </section>
 
+    <!-- Blog Post -->
     <section class="post">
       <h2>Paavo Nurmi Marathon Experiences</h2>
       <p>I participated in the Paavo Nurmi Marathon and it was an unforgettable experience. 
          The atmosphere, the crowd, and the route were amazing!</p>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Paavo_Nurmi_Statue_Turku_2015.jpg/800px-Paavo_Nurmi_Statue_Turku_2015.jpg" 
-           alt="Paavo Nurmi Marathon">
+      <img src="images/_NZ92175-Edit.jpg" alt="Paavo Nurmi Marathon">
     </section>
   </main>
 
