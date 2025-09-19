@@ -32,6 +32,9 @@
       justify-content: center;
       gap: 24px;
     }
+    nav li {
+      position: relative;
+    }
     nav a {
       color: #fff;
       text-decoration: none;
@@ -39,6 +42,33 @@
     }
     nav a:hover {
       text-decoration: underline;
+    }
+
+    /* Dropdown menu */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #007acc;
+      list-style: none;
+      margin: 0;
+      padding: 8px 0;
+      border-radius: 6px;
+      min-width: 220px;
+    }
+    .dropdown-content li {
+      padding: 0;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 8px 16px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .dropdown-content a:hover {
+      background: #005f99;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     /* Hero banner */
@@ -87,7 +117,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,.08);
       margin-bottom: 24px;
-      overflow: auto; /* pitää tekstin selkeänä floatin kanssa */
+      overflow: auto;
     }
     .card h3 {
       margin-top: 0;
@@ -130,7 +160,14 @@
   <nav>
     <ul>
       <li><a href="#workouts">Workouts</a></li>
-      <li><a href="#races">Races</a></li>
+      <li class="dropdown">
+        <a href="#races">Races ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="#hcr2025">HCR Marathon Relay 2025</a></li>
+          <li><a href="#pnm2025">Paavo Nurmi Marathon 2025</a></li>
+          <li><a href="#pnm2024">Paavo Nurmi Marathon 2024</a></li>
+        </ul>
+      </li>
       <li><a href="#plans">Training Plans</a></li>
       <li><a href="#other">Other</a></li>
     </ul>
@@ -158,21 +195,33 @@
       <h2>Races</h2>
 
       <!-- Helsinki City Running Day -->
-      <div class="card">
-        <h3>Helsinki City Running Day 2025</h3>
-        <img src="images/Z50_0643.jpg" alt="Helsinki City Running Day 2025" class="float-left" />
+      <div class="card" id="hcr2025">
+        <h3>Helsinki City Running Day, Marathon Relay – May 17, 2025</h3>
+        <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/iNnWui9mgFe4rEHs05ytIx8qTPlYwq_gFkxE8sKuTJU-2048x1153.jpg" 
+             alt="Santeri Ojala running Helsinki City Running Day Marathon Relay with Aurajoen Dynamo team" 
+             class="float-left" />
         <p>
-          Helsinki City Running Day 2025 is one of the largest running events in Finland. 
-          I’m preparing for this major race in the capital, where thousands of runners gather for different distances. 
+          Helsinki City Running Day once again offered an amazing atmosphere. This time I took part in the marathon relay as 
+          part of our team <strong>Aurajoen Dynamo</strong>, together with my training friends from Turku. We managed to secure 
+          <strong>3rd place overall</strong>, which was a great achievement for us.
         </p>
         <p>
-          I’ll share my training build-up, expectations, and reflections after the race.
-          <a href="#" target="_blank">More info (coming soon)</a>
+          My personal stint was <strong>12.3 kilometers</strong>, and I held a steady <strong>3:38 min/km pace</strong>, 
+          which was really good for my condition at that time.
+        </p>
+        <p>
+          The event is Finland’s largest running event, bringing together thousands of runners from around the world. 
+          More info here: 
+          <a href="https://helsinkicityrunningday.fi/" target="_blank">Helsinki City Running Day</a>.
+        </p>
+        <p>
+          You can also find more details about my race on my 
+          <a href="https://www.strava.com/activities/14505433323" target="_blank">Strava page</a>.
         </p>
       </div>
 
       <!-- Paavo Nurmi 2025 -->
-      <div class="card">
+      <div class="card" id="pnm2025">
         <h3>Paavo Nurmi Marathon 2025</h3>
         <img src="https://raw.githubusercontent.com/santeriojala13/Running-/main/images/_NZ91837-Edit.jpg" 
              alt="Santeri Ojala running Paavo Nurmi Marathon 2025 in Turku with medal" 
@@ -197,14 +246,16 @@
       </div>
 
       <!-- Paavo Nurmi 2024 -->
-      <div class="card">
+      <div class="card" id="pnm2024">
         <h3>Paavo Nurmi Marathon 2024</h3>
         <img src="images/Z50_0643.jpg" alt="Paavo Nurmi Marathon 2024 in Turku" class="float-left" />
         <p>
-          The 2024 edition of the Paavo Nurmi Marathon was....
+          The 2024 edition of the Paavo Nurmi Marathon was a turning point for me. I faced challenges with pacing and 
+          struggled during the second half of the race, but crossing the finish line was still a huge personal victory. 
         </p>
         <p>
-          That .....
+          That experience taught me the importance of consistency in training and mental resilience during tough moments. 
+          The lessons learned in 2024 directly influenced how I prepared for the 2025 race.
         </p>
       </div>
     </section>
