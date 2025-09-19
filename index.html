@@ -2,10 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Testisivu</title>
+  <title>My Running Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #333;
+    }
+    .intro {
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005f99;
+    }
+    .post {
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .post img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Moikka! Tämä on testi 🚀</h1>
-  <p>Jos näet tämän GitHub Pagesissa, kaikki toimii!</p>
+  <header>
+    <h1>My Running Blog 🏃</h1>
+  </header>
+
+  <section class="intro">
+    <p>This is my new running blog posting details about my runs and experiences.</p>
+  </section>
+
+  <section class="new-post">
+    <h2>Write a new blog post</h2>
+    <form>
+      <input type="text" placeholder="Post title" required>
+      <textarea rows="4" placeholder="Write your post here..." required></textarea>
+      <button type="submit">Publish</button>
+    </form>
+  </section>
+
+  <section class="post">
+    <h2>Paavo Nurmi Marathon Experiences</h2>
+    <p>I participated in the Paavo Nurmi Marathon and it was an unforgettable experience. The atmosphere, the crowd, and the route were amazing!</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Paavo_Nurmi_Statue_Turku_2015.jpg/640px-Paavo_Nurmi_Statue_Turku_2015.jpg" alt="Paavo Nurmi Marathon">
+  </section>
+
 </body>
 </html>
